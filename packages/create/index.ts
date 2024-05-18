@@ -325,56 +325,6 @@ async function init() {
   const pkgManager = pkgInfo ? pkgInfo.name : 'npm'
   const isYarn1 = pkgManager === 'yarn' && pkgInfo?.version.startsWith('1.')
 
-  const templateRoot = path.resolve(__dirname, 'template')
-  const callbacks: ((dataSource: Record<string, any>) => Promise<void>)[] = []
-  const render = function render(templateName: string) {
-    const templateDir = path.resolve(templateRoot, templateName)
-    renderTemplate(templateDir, root, callbacks)
-  }
-  // Render base template
-  render('base')
-
-  // Add configs.
-  if (needsLint)
-    render('lint')
-
-  if (needsCi)
-    render('ci')
-
-  if (needsTest)
-    render('test')
-
-  if (monorepo) {
-    const packageDir = path.resolve(root, 'packages', targetDir)
-
-    render('monorepo')
-
-    renderTemplate(
-      path.resolve(__dirname, `template-${template}`),
-      packageDir,
-      callbacks,
-    )
-
-    renderTemplate(
-      path.resolve(templateRoot, 'base'),
-      packageDir,
-      callbacks,
-    )
-  }
-  else {
-    // Render template files.
-    renderTemplate(
-      path.resolve(__dirname, `template-${template}`),
-      monorepo ? path.resolve(root, 'packages', targetDir) : root,
-      callbacks,
-    )
-  }
-
-  const dataStore = {}
-
-  for (const cb of callbacks)
-    await cb(dataStore)
-
   const { customCommand }
     = FRAMEWORKS.flatMap(f => f.variants).find(v => v.name === template) ?? {}
 
@@ -415,6 +365,56 @@ async function init() {
     process.exit(status ?? 0)
   }
 
+  const templateRoot = path.resolve(__dirname, 'template')
+  const callbacks: ((dataSource: Record<string, any>) => Promise<void>)[] = []
+  const render = function render(templateName: string) {
+    const templateDir = path.resolve(templateRoot, templateName)
+    renderTemplate(templateDir, root, callbacks)
+  }
+  // Render base template
+  render('base')
+
+  // Add configs.
+  if (needsLint)
+    render('lint')
+
+  if (needsCi)
+    render('ci')
+
+  if (needsTest)
+    render('test')
+
+  const dataStore = {}
+
+  for (const cb of callbacks)
+    await cb(dataStore)
+
+  if (monorepo) {
+    const packageDir = path.resolve(root, 'packages', targetDir)
+
+    render('monorepo')
+
+    renderTemplate(
+      path.resolve(__dirname, `template-${template}`),
+      packageDir,
+      callbacks,
+    )
+
+    renderTemplate(
+      path.resolve(templateRoot, 'base'),
+      packageDir,
+      callbacks,
+    )
+  }
+  else {
+    // Render template files.
+    renderTemplate(
+      path.resolve(__dirname, `template-${template}`),
+      monorepo ? path.resolve(root, 'packages', targetDir) : root,
+      callbacks,
+    )
+  }
+
   console.log(`\nScaffolding project in ${root}...`)
 
   const write = (file: string, content?: string) => {
@@ -429,7 +429,12 @@ async function init() {
 
   pkg.name = packageName || getProjectName()
 
-  write('package.json', `${JSON.stringify(pkg, null, 2)}\n`)
+  write(
+    monorepo
+      ? path.join('packages', targetDir, 'package.json')
+      : 'package.json',
+    `${JSON.stringify(pkg, null, 2)}\n`,
+  )
 
   const cdProjectName = path.relative(cwd, root)
   console.log(`\nDone. Now run:\n`)
