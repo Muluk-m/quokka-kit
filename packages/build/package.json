@@ -1,6 +1,6 @@
 {
   "name": "@klook/quokka-build",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "⚡ Fast package builder, powered by esbuild",
   "author": "Muluk ma<muluk.ma@klook.com>",
   "license": "MIT",
@@ -85,7 +85,6 @@
     "hash-sum": "^2.0.0",
     "local-pkg": "^0.4.2",
     "magic-string": "^0.30.8",
-    "resolve-from": "^5.0.0",
     "tsup": "^8.0.2",
     "unconfig": "^0.3.12"
   },

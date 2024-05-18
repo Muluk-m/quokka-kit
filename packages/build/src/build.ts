@@ -1,14 +1,16 @@
 import process from 'node:process'
+import { existsSync } from 'node:fs'
+import path from 'node:path'
 import { build as tsup } from 'tsup'
 import { sassPlugin } from 'esbuild-sass-plugin'
 import type { Options } from 'tsup'
 import type { BuildOptions as EsbuildOptions } from 'esbuild'
-import resolveFrom from 'resolve-from'
 
 import { builderName, targetNode, targetWeb } from './constants'
 import type { BuildOptionsResolved } from './utils'
 import { importConfig, normalizeConfig } from './utils'
 import type { BuildOptions } from './config'
+import type { VuePluginOptions } from './plugins/esbuild-vue'
 
 function modifyEsbuildOptions(options: EsbuildOptions, config: BuildOptions): Options['esbuildOptions'] {
   return (_options) => {
@@ -40,14 +42,27 @@ const buildItem = async (config: BuildOptionsResolved) => {
   options.esbuildPlugins ||= []
 
   if (config.vue) {
-    const id = resolveFrom(process.cwd(), './plugins/esbuild-vue')
-    const vue2 = await import(id)
+    const vue2 = (await import('./plugins/esbuild-vue')).default
+    const klkTokenPath = './node_modules/@klook/klook-ui/src/styles/token/index.scss'
+    const defaultOptions: VuePluginOptions = {
+      extractCss: true,
+    }
+
+    if (existsSync(path.resolve(klkTokenPath))) {
+      defaultOptions.style = {
+        preprocessOptions: {
+          scss: {
+            data: `@import "${klkTokenPath}";`,
+          },
+        },
+      }
+    }
+
     options.esbuildPlugins.push(
-      vue2(typeof config.vue !== 'object'
-        ? {
-            extractCss: true,
-          }
-        : config.vue),
+      vue2(typeof config.vue === 'object'
+        ? config.vue
+        : defaultOptions,
+      ),
     )
   }
 

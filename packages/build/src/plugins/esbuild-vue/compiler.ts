@@ -1,5 +1,5 @@
 import { parse } from '@vue/component-compiler-utils'
-import templateCompiler from 'vue-template-compiler'
+import * as templateCompiler from 'vue-template-compiler'
 import type {
   VueTemplateCompiler,
 } from '@vue/component-compiler-utils/dist/types'
