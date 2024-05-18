@@ -6,13 +6,13 @@ export default defineConfig(
       platform: 'node',
       dts: false,
       entry: ['src/cli.ts'],
-      format: ['esm'],
+      format: ['cjs'],
     },
     {
       platform: 'node',
       dts: true,
       entry: ['src/config.ts', 'src/index.ts'],
-      format: ['esm', 'cjs'],
+      format: ['cjs'],
     },
   ],
 )
