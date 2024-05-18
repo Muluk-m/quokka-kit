@@ -1,7 +1,7 @@
 {
   "name": "@klook/quokka-create",
   "type": "module",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "Muluk ma<muluk.ma@klook.com>",
   "license": "MIT",
   "homepage": "https://knpm.klook.io/-/web/detail/@klook/quokka-build",
@@ -24,7 +24,8 @@
   "scripts": {
     "dev": "quokka-build --watch",
     "build": "quokka-build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "release": "bumpp"
   },
   "dependencies": {
     "gradient-string": "^2.0.2"
