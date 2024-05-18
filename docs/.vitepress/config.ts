@@ -22,7 +22,7 @@ export default defineConfig({
 
     sidebar: {
       'quokka-build/': { base: '/quokka-build/', items: sidebarGuide() },
-      'standard': { base: '/standard/', items: sidebarStandard() },
+      'quokka-standard': { base: '/quokka-standard/', items: sidebarStandard() },
     },
 
     socialLinks: [
@@ -48,8 +48,8 @@ function nav(): DefaultTheme.NavItem[] {
     },
     {
       text: 'Standard',
-      link: '/standard/what-is-standard',
-      activeMatch: '/standard/',
+      link: '/quokka-standard/what-is-standard',
+      activeMatch: '/quokka-standard/',
     },
     {
       text: 'version',

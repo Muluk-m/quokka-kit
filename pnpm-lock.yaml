@@ -11,9 +11,9 @@ importers:
       '@klook/quokka-build':
         specifier: workspace:*
         version: link:packages/build
-      '@klook/standard':
-        specifier: ^0.0.12
-        version: 0.0.12(@vue/compiler-sfc@3.4.23)(eslint-plugin-format@0.1.1)(eslint@8.57.0)(typescript@5.4.5)(vitest@1.4.0)
+      '@klook/quokka-standard':
+        specifier: ^0.0.13
+        version: 0.0.13(@vue/compiler-sfc@3.4.23)(eslint-plugin-format@0.1.1)(eslint@8.57.0)(typescript@5.4.5)(vitest@1.4.0)
       '@types/node':
         specifier: ^20.12.3
         version: 20.12.7
@@ -1138,8 +1138,8 @@ packages:
       type-detect: 4.0.8
     dev: true
 
-  /@klook/standard@0.0.12(@vue/compiler-sfc@3.4.23)(eslint-plugin-format@0.1.1)(eslint@8.57.0)(typescript@5.4.5)(vitest@1.4.0):
-    resolution: {integrity: sha512-HjF7kunUn8Zlz6mXMCzKE1h2d9+HriMwW8K/l7BsL6FvCiaJI+HBLRmVQD39Q9fxoX+WhdmyFAFysAD64RdInA==}
+  /@klook/quokka-standard@0.0.13(@vue/compiler-sfc@3.4.23)(eslint-plugin-format@0.1.1)(eslint@8.57.0)(typescript@5.4.5)(vitest@1.4.0):
+    resolution: {integrity: sha512-43VhiQ2EVX4tjnJD6p6m7QLik+GvRBcGzjx+RVmmcp4OgcCnsjpfeis8siFV1BXoctk2bzn4wuBTYtP8XT0M+g==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     peerDependencies:

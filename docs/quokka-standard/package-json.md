@@ -14,18 +14,18 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@klook/standard": "^0.0.11"
+    "@klook/quokka-standard": "^0.0.11"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",
-    "commit-msg": "pnpm @klook/standard commitlint"
+    "commit-msg": "pnpm quokka-standard commitlint"
   },
   "lint-staged": {
     "*": "eslint --fix"
   },
   "commitlint": {
     "extends": [
-      "@klook/standard/commitlint.config"
+      "@klook/quokka-standard/commitlint.config"
     ]
   }
 }

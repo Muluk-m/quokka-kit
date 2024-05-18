@@ -2,7 +2,7 @@
 
 - 📝 klook FE 研发规范体系
 - ⚙️ 提供配置文件导出, 例如 eslint.config、stlyelint.config、commitlint.config
-- 🛠️ 提供 cli 能力来快速集成 `@klook/standard`
+- 🛠️ 提供 cli 能力来快速集成 `@klook/quokka-standard`
 
 ## 特点
 
@@ -14,7 +14,8 @@
 
 ## 功能
 
-Quokka-Standard 提供了两部分能力
+Quokka-Standard 提供了以下能力
 
 - `lint` 配置文件导出
 - `cli` 工具编码规范校验
+- `commitlint` commit msg 格式校验

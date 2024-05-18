@@ -1,4 +1,4 @@
-import eslint from '@klook/standard'
+import eslint from '@klook/quokka-standard'
 
 export default eslint({
   ignores: [
