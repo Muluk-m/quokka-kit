@@ -1,69 +1,44 @@
-以下是完整配置
+# 常用配置参考
 
-````ts
-export interface VuePluginOptions {
-  /**
-   * Default language for blocks.
-   *
-   * @default `{}`
-   * @example
-   * ```js
-   * VuePlugin({ defaultLang: { script: 'ts' } })
-   * ```
-   */
-  defaultLang?: {
-    [key: string]: string
-  }
+## 完整配置
 
-  /**
-   * Prepend CSS.
-   * @default `undefined`
-   * @example
-   * ```js
-   * VuePlugin({ data: { scss: '$color: red;' } }) // to extract css
-   * ```
-   */
-  data?: Partial<VuePluginOptionsData>
+以下是完整配置的类型
 
-  /**
-   * Inject CSS in JavaScript.
-   * @default `false`
-   * @example
-   * ```js
-   * VuePlugin({ extractCss: false }) // to extract css
-   * ```
-   */
-  extractCss?: boolean
-  compiler?: VueTemplateCompiler
-  compilerParseOptions?: VueTemplateCompilerParseOptions
-  sourceRoot?: string
-  /**
-   * @@vue/component-compiler [#](https://github.com/vuejs/vue-component-compiler#api) script processing options.
-   */
-  script?: ScriptOptions
-  /**
-   * @@vue/component-compiler [#](https://github.com/vuejs/vue-component-compiler#api) style processing options.
-   */
-  style?: StyleOptions
-  /**
-   * @@vue/component-compiler [#](https://github.com/vuejs/vue-component-compiler#api) template processing options.
-   */
-  template?: TemplateOptions
-  /**
-   * @@vue/component-compiler [#](https://github.com/vuejs/vue-component-compiler#api) module name or global function for custom runtime component normalizer.
-   */
-  normalizer?: string
-  /**
-   * @@vue/component-compiler [#](https://github.com/vuejs/vue-component-compiler#api) module name or global function for custom style injector factory.
-   */
-  styleInjector?: string
-  /**
-   * @@vue/component-compiler [#](https://github.com/vuejs/vue-component-compiler#api) module name or global function for custom style injector factory for SSR environment.
-   */
-  styleInjectorSSR?: string
-
-  styleInjectorShadow?: string
-
-  isWebComponent?: boolean
+```ts
+export interface BuildOptions {
+  // name?: string
+  minify?: boolean | 'both'
+  vue?: boolean | VuePluginOptions
+  scss?: boolean | import('sass').Options<'sync' | 'async'>
+  dts?: Options['dts']
+  outDir?: string
+  platform?: 'web' | 'node'
+  config?: boolean | string
+  /** Documentation: https://esbuild.github.io/api/#define */
+  define?: EsbuildOptions['define']
+  /** Documentation: https://esbuild.github.io/api/#alias */
+  alias?: Record<string, string>
+  entry?: Options['entry']
+  format?: Options['format']
+  tsup?: Omit<Options, 'dts' | 'tsconfig' | 'platform' | 'entry' | 'format' | 'outDir' | 'config'>
 }
-````
+```
+
+## 多入口配置
+
+```ts
+import { defineConfig } from '@klook/quokka-build/config'
+
+export default defineConfig(
+  [
+    {
+      dts: false,
+      entry: ['src/cli.ts'],
+      format: ['cjs'],
+    },
+    {
+      entry: ['src/config.ts', 'src/index.ts'],
+    },
+  ],
+)
+```
