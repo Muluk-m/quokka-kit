@@ -5,6 +5,7 @@ import type { DefaultTheme } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Klook Quokka',
+  base: '/klook-infra-tools',
   description: 'Klook FE Infra tools',
   outDir: '../public',
   vite: {
@@ -12,7 +13,7 @@ export default defineConfig({
   },
   srcDir: '.',
   head: [
-    ['link', { rel: 'icon', type: 'image/ico', href: '/favicon.ico' }],
+    ['link', { rel: 'icon', type: 'image/ico', href: '/klook-infra-tools/favicon.ico' }],
   ],
   themeConfig: {
     logo: 'https://cdn.klook.com/s/dist_web/favicons/favicon-32x32.png',
@@ -20,8 +21,8 @@ export default defineConfig({
     nav: nav(),
 
     sidebar: {
-      build: { base: '/quokka-build/', items: sidebarGuide() },
-      standard: { base: '/standard/', items: sidebarStandard() },
+      'quokka-build/': { base: '/quokka-build/', items: sidebarGuide() },
+      'standard': { base: '/standard/', items: sidebarStandard() },
     },
 
     socialLinks: [
@@ -42,8 +43,8 @@ function nav(): DefaultTheme.NavItem[] {
   return [
     {
       text: 'Build',
-      link: '/build/what-is-quokka-build',
-      activeMatch: '/build/',
+      link: '/quokka-build/what-is-quokka-build',
+      activeMatch: '/quokka-build/',
     },
     {
       text: 'Standard',

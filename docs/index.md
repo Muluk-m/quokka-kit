@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: Quick start
-      link: /quokka-build/getting-started
+      link: ./quokka-build/getting-started
     - theme: alt
       text: API Examples
       link: /api-examples
