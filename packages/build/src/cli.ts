@@ -5,6 +5,7 @@ import { description, engines, version } from '../package.json'
 import { builderName } from './constants'
 import { build } from './build'
 import type { BuildOptions } from './config'
+import { slash } from './utils'
 
 const main = defineCommand({
   meta: {
@@ -64,6 +65,8 @@ const main = defineCommand({
     },
   },
   async run({ args }) {
+    const files = args._
+
     if (args.version) {
       // eslint-disable-next-line no-console
       console.log(`${builderName}/${version} node: ${engines.node}`)
@@ -73,8 +76,9 @@ const main = defineCommand({
     const options = {
       tsup: {},
     } as BuildOptions
-    if (args.entry)
-      options.entry = args.entry.split(',')
+
+    if (!options.entry && files.length > 0)
+      options.entry = files.map(slash)
 
     if (args.dts)
       options.dts = true
