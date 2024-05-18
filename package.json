@@ -38,8 +38,9 @@
     "docs:build": "pnpm -C docs run docs:build"
   },
   "devDependencies": {
+    "@commitlint/cli": "^18.4.4",
     "@klook/quokka-build": "workspace:*",
-    "@klook/standard": "^0.0.6",
+    "@klook/standard": "^0.0.8",
     "@types/node": "^20.12.3",
     "bumpp": "^9.4.0",
     "eslint": "^8.57.0",
@@ -53,9 +54,15 @@
     "vitest": "^1.4.0"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "pnpm commitlint --edit $1"
   },
   "lint-staged": {
     "*": "eslint --fix"
+  },
+  "commitlint": {
+    "extends": [
+      "@klook/standard/commitlint.config"
+    ]
   }
 }
