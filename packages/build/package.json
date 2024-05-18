@@ -1,6 +1,6 @@
 {
   "name": "@klook/quokka-build",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "⚡ Fast package builder, powered by esbuild",
   "author": "Muluk ma<muluk.ma@klook.com>",
   "license": "MIT",
