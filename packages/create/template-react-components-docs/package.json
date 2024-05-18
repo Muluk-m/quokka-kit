@@ -1,0 +1,30 @@
+{
+  "name": "quokka-react-components-docs-starter",
+  "type": "commonjs",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "quokka-build --watch",
+    "build": "quokka-build",
+    "typecheck": "tsc --noEmit",
+    "docs:dev": "rspress dev docs",
+    "docs:build": "rspress build docs",
+    "docs:preview": "rspress preview docs"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@klook/quokka-build": "^0.0.8",
+    "@rspress/plugin-playground": "^1.19.1",
+    "react": "^18.3.1",
+    "rspress": "^1.19.1",
+    "typescript": "^5.2.2"
+  }
+}

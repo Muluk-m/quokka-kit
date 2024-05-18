@@ -49,11 +49,14 @@ bun create quokka my-vue-app --template vue
 
 Currently supported template presets include:
 
+- `vue-app`
 - `vue-components`
 - `vue-components-docs`
+- `react-app`
 - `react-components`
 - `react-components-docs`
-- `docs`
+- `api-docs`
 - `typescript`
+- `typescript-docs`
 
 You can use `.` for the project name to scaffold in the current directory.

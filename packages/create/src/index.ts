@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -43,18 +44,18 @@ interface FrameworkVariant {
 
 const FRAMEWORKS: Framework[] = [
   {
-    name: 'vanilla',
-    display: 'Vanilla',
+    name: 'typescript',
+    display: 'Typescript',
     color: yellow,
     variants: [
       {
-        name: 'vanilla-ts',
-        display: 'TypeScript',
-        color: blue,
+        name: 'typescript',
+        display: 'Typescript',
+        color: lightBlue,
       },
       {
-        name: 'vanilla',
-        display: 'JavaScript',
+        name: 'typescript-docs',
+        display: 'TypeScript Docs',
         color: yellow,
       },
     ],
@@ -65,26 +66,20 @@ const FRAMEWORKS: Framework[] = [
     color: green,
     variants: [
       {
-        name: 'vue-ts',
-        display: 'TypeScript',
+        name: 'vue-components',
+        display: 'Vue Components',
         color: blue,
       },
       {
+        name: 'vue-components-docs',
+        display: 'Vue Components + Docs',
+        color: magenta,
+      },
+      {
         name: 'vue',
-        display: 'JavaScript',
-        color: yellow,
-      },
-      {
-        name: 'custom-create-vue',
-        display: 'Customize with create-vue ↗',
-        color: green,
-        customCommand: 'npm create vue@latest TARGET_DIR',
-      },
-      {
-        name: 'custom-nuxt',
-        display: 'Nuxt ↗',
+        display: 'Vue App ↗',
         color: lightGreen,
-        customCommand: 'npm exec nuxi init TARGET_DIR',
+        customCommand: 'npx @klook/kiwi-cli TARGET_DIR',
       },
     ],
   },
@@ -94,146 +89,20 @@ const FRAMEWORKS: Framework[] = [
     color: cyan,
     variants: [
       {
-        name: 'react-ts',
-        display: 'TypeScript',
+        name: 'react-components',
+        display: 'React Components',
         color: blue,
       },
       {
-        name: 'react-swc-ts',
-        display: 'TypeScript + SWC',
-        color: blue,
+        name: 'react-components-docs',
+        display: 'React Components + Docs',
+        color: yellow,
       },
       {
         name: 'react',
-        display: 'JavaScript',
-        color: yellow,
-      },
-      {
-        name: 'react-swc',
-        display: 'JavaScript + SWC',
-        color: yellow,
-      },
-      {
-        name: 'custom-remix',
-        display: 'Remix ↗',
-        color: cyan,
-        customCommand: 'npm create remix@latest TARGET_DIR',
-      },
-    ],
-  },
-  {
-    name: 'preact',
-    display: 'Preact',
-    color: magenta,
-    variants: [
-      {
-        name: 'preact-ts',
-        display: 'TypeScript',
-        color: blue,
-      },
-      {
-        name: 'preact',
-        display: 'JavaScript',
-        color: yellow,
-      },
-    ],
-  },
-  {
-    name: 'lit',
-    display: 'Lit',
-    color: lightRed,
-    variants: [
-      {
-        name: 'lit-ts',
-        display: 'TypeScript',
-        color: blue,
-      },
-      {
-        name: 'lit',
-        display: 'JavaScript',
-        color: yellow,
-      },
-    ],
-  },
-  {
-    name: 'svelte',
-    display: 'Svelte',
-    color: red,
-    variants: [
-      {
-        name: 'svelte-ts',
-        display: 'TypeScript',
-        color: blue,
-      },
-      {
-        name: 'svelte',
-        display: 'JavaScript',
-        color: yellow,
-      },
-      {
-        name: 'custom-svelte-kit',
-        display: 'SvelteKit ↗',
-        color: red,
-        customCommand: 'npm create svelte@latest TARGET_DIR',
-      },
-    ],
-  },
-  {
-    name: 'solid',
-    display: 'Solid',
-    color: blue,
-    variants: [
-      {
-        name: 'solid-ts',
-        display: 'TypeScript',
-        color: blue,
-      },
-      {
-        name: 'solid',
-        display: 'JavaScript',
-        color: yellow,
-      },
-    ],
-  },
-  {
-    name: 'qwik',
-    display: 'Qwik',
-    color: lightBlue,
-    variants: [
-      {
-        name: 'qwik-ts',
-        display: 'TypeScript',
-        color: lightBlue,
-      },
-      {
-        name: 'qwik',
-        display: 'JavaScript',
-        color: yellow,
-      },
-      {
-        name: 'custom-qwik-city',
-        display: 'QwikCity ↗',
-        color: lightBlue,
-        customCommand: 'npm create qwik@latest basic TARGET_DIR',
-      },
-    ],
-  },
-  {
-    name: 'others',
-    display: 'Others',
-    color: reset,
-    variants: [
-      {
-        name: 'create-vite-extra',
-        display: 'create-vite-extra ↗',
-        color: reset,
-        customCommand: 'npm create vite-extra@latest TARGET_DIR',
-      },
-      {
-        name: 'create-electron-vite',
-        display: 'create-electron-vite ↗',
-        color: reset,
-        customCommand: 'npm create electron-vite@latest TARGET_DIR',
+        display: 'React App ↗',
+        color: lightRed,
+        customCommand: 'npx @klook/react-admin-cli create TARGET_DIR',
       },
     ],
   },
@@ -376,12 +245,12 @@ async function init() {
     fs.mkdirSync(root, { recursive: true })
 
   // determine template
-  let template: string = variant || framework?.name || argTemplate
-  let isReactSwc = false
-  if (template.includes('-swc')) {
-    isReactSwc = true
-    template = template.replace('-swc', '')
-  }
+  const template: string = variant || framework?.name || argTemplate
+  // let isReactSwc = false
+  // if (template.includes('-swc')) {
+  //   isReactSwc = true
+  //   template = template.replace('-swc', '')
+  // }
 
   const pkgInfo = pkgFromUserAgent(process.env.npm_config_user_agent)
   const pkgManager = pkgInfo ? pkgInfo.name : 'npm'
@@ -455,8 +324,8 @@ async function init() {
 
   write('package.json', `${JSON.stringify(pkg, null, 2)}\n`)
 
-  if (isReactSwc)
-    setupReactSwc(root, template.endsWith('-ts'))
+  // if (isReactSwc)
+  //   setupReactSwc(root, template.endsWith('-ts'))
 
   const cdProjectName = path.relative(cwd, root)
   console.log(`\nDone. Now run:\n`)
@@ -544,25 +413,25 @@ function pkgFromUserAgent(userAgent: string | undefined) {
   }
 }
 
-function setupReactSwc(root: string, isTs: boolean) {
-  editFile(path.resolve(root, 'package.json'), (content) => {
-    return content.replace(
-      /"@vitejs\/plugin-react": ".+?"/,
-      `"@vitejs/plugin-react-swc": "^3.5.0"`,
-    )
-  })
-  editFile(
-    path.resolve(root, `vite.config.${isTs ? 'ts' : 'js'}`),
-    (content) => {
-      return content.replace('@vitejs/plugin-react', '@vitejs/plugin-react-swc')
-    },
-  )
-}
+// function setupReactSwc(root: string, isTs: boolean) {
+//   editFile(path.resolve(root, 'package.json'), (content) => {
+//     return content.replace(
+//       /"@vitejs\/plugin-react": ".+?"/,
+//       `"@vitejs/plugin-react-swc": "^3.5.0"`,
+//     )
+//   })
+//   editFile(
+//     path.resolve(root, `vite.config.${isTs ? 'ts' : 'js'}`),
+//     (content) => {
+//       return content.replace('@vitejs/plugin-react', '@vitejs/plugin-react-swc')
+//     },
+//   )
+// }
 
-function editFile(file: string, callback: (content: string) => string) {
-  const content = fs.readFileSync(file, 'utf-8')
-  fs.writeFileSync(file, callback(content), 'utf-8')
-}
+// function editFile(file: string, callback: (content: string) => string) {
+//   const content = fs.readFileSync(file, 'utf-8')
+//   fs.writeFileSync(file, callback(content), 'utf-8')
+// }
 
 init().catch((e) => {
   console.error(e)

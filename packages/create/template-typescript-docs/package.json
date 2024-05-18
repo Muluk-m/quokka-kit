@@ -1,0 +1,26 @@
+{
+  "name": "quokka-typescript-docs-starter",
+  "type": "commonjs",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "quokka-build --watch",
+    "build": "quokka-build",
+    "typecheck": "tsc --noEmit",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vitepress": "^1.1.0",
+    "vitepress-plugin-search": "^1.0.4-alpha.22"
+  }
+}

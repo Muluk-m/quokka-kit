@@ -1,5 +1,5 @@
 {
-  "name": "quokka-typescript-starter",
+  "name": "quokka-vue-components-starter",
   "type": "commonjs",
   "version": "0.0.0",
   "main": "./dist/index.js",
@@ -9,13 +9,15 @@
     "dist"
   ],
   "scripts": {
-    "dev": "quokka-build --watch",
-    "build": "quokka-build",
+    "dev": "vite dev",
+    "build": "vite build",
     "typecheck": "tsc --noEmit"
   },
-
   "dependencies": {},
   "devDependencies": {
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-plugin-vue2": "^2.0.3",
+    "vue": "2.6.11"
   }
 }
