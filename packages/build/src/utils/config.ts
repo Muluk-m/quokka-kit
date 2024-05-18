@@ -1,6 +1,7 @@
 import path from 'node:path'
 import { loadConfig } from 'unconfig'
 import type { Format } from 'tsup'
+import defu from 'defu'
 import type { BuildOptions } from '../config'
 import { configFileName } from '../constants'
 
@@ -21,9 +22,15 @@ export function normalizeConfig(
     tsup: {},
     ...(options ?? {}),
   } as BuildOptionsResolved
-  normalized.tsup.entry ||= [path.resolve(pkgDir, 'src/index.ts')]
-  normalized.tsup.format ||= ['esm', 'cjs']
+  normalized.entry ||= [path.resolve(pkgDir, 'src/index.ts')]
+  normalized.format ||= ['esm', 'cjs']
   return normalized
+}
+
+function applyDefaults(...args: any[]): any {
+  // defu does not support top-level array merging, we wrap it with an object and unwrap it
+  // @ts-expect-error cast
+  return defu(...args.map((i: any) => ({ config: i }))).config
 }
 
 export async function importConfig(
@@ -33,7 +40,7 @@ export async function importConfig(
   const configFile = userConfig.config === true || userConfig.config === undefined ? configFileName : userConfig.config
 
   const config = configFile === false
-    ? {}
+    ? userConfig
     : (await loadConfig<BuildOptions | BuildOptions[]>({
         sources: [
           {
@@ -41,10 +48,9 @@ export async function importConfig(
           },
         ],
         cwd: pkgDir,
-        defaults: [],
       })).config
 
   const configs = Array.isArray(config) ? config : [config]
 
-  return configs
+  return configs.map(i => applyDefaults(i, userConfig))
 }

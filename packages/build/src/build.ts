@@ -1,7 +1,6 @@
 import process from 'node:process'
 import { build as tsup } from 'tsup'
 import { sassPlugin } from 'esbuild-sass-plugin'
-import defu from 'defu'
 import type { Options } from 'tsup'
 import type { BuildOptions as EsbuildOptions } from 'esbuild'
 import resolveFrom from 'resolve-from'
@@ -103,7 +102,7 @@ export async function build(userConfig: BuildOptions = {}) {
 
   const configs = await importConfig(pkgDir, userConfig)
 
-  const normalizedConfig = configs.map(config => normalizeConfig(pkgDir, defu(config, userConfig)))
+  const normalizedConfig = configs.map(config => normalizeConfig(pkgDir, config))
 
   await Promise.all(normalizedConfig.map(buildItem))
 }

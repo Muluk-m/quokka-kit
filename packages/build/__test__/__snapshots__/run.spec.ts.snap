@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`config 1`] = `
+[
+  {
+    "alias": {
+      "@": "./src",
+    },
+    "dts": false,
+    "entry": [
+      "src/index.ts",
+    ],
+    "format": [
+      "cjs",
+    ],
+    "vue": true,
+  },
+  {
+    "alias": {
+      "@": "./src",
+    },
+    "dts": false,
+    "entry": [
+      "src/config.ts",
+    ],
+    "vue": true,
+  },
+]
+`;
