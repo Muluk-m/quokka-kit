@@ -6,6 +6,7 @@ import type { PluginOption } from 'vite'
 export default defineConfig({
   title: 'My Awesome Project',
   description: 'A VitePress Site',
+  outDir: 'public',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [

@@ -1,6 +1,13 @@
 {
+  "name": "quokka-monorepo-starter",
+  "packageManager": "pnpm@8.15.5",
+  "private": true,
   "scripts": {
-    "build": "turbo build"
+    "build": "turbo build",
+    "release:patch-beta": "npx lerna version --no-private --conventional-commits prerelease --preid beta",
+    "release:minor-beta": "npx lerna version --no-private --conventional-commits preminor --preid beta",
+    "release:patch": "npx lerna version --no-private --conventional-commits patch",
+    "release:minor": "npx lerna version --no-private --conventional-commits minor"
   },
   "devDependencies": {
     "turbo": "^1.13.0"
