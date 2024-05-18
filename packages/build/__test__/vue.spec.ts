@@ -4,17 +4,14 @@ import { build } from '../src'
 // })
 
 build({
-  platform: 'web',
-  entry: ['fixtures/input/src/index.ts'],
+  platform: 'node',
+  entry: ['fixtures/input'],
   vue: {
     extractCss: true,
-    data: {
-      scss: '@import "../../../../node_modules/@klook/klook-ui/lib/styles/index.scss";',
-    },
   },
   dts: false,
   scss: true,
-  format: ['cjs', 'esm'],
+  // format: ['cjs', 'esm'],
   outDir: 'fixtures/output',
   config: false,
 })

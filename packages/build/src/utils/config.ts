@@ -17,7 +17,7 @@ export function normalizeConfig(
     minify: false,
     vue: false,
     dts: true,
-    platform: 'web',
+    platform: 'node',
     tsup: {},
     ...(options ?? {}),
   } as BuildOptionsResolved
@@ -29,7 +29,7 @@ export function normalizeConfig(
 export async function importConfig(
   pkgDir: string,
   userConfig: BuildOptions = {},
-): Promise<BuildOptionsResolved[]> {
+) {
   const configFile = userConfig.config === true || userConfig.config === undefined ? configFileName : userConfig.config
 
   const config = configFile === false
@@ -46,5 +46,5 @@ export async function importConfig(
 
   const configs = Array.isArray(config) ? config : [config]
 
-  return configs.map(config => normalizeConfig(pkgDir, { ...config, ...userConfig }))
+  return configs
 }

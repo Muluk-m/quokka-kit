@@ -1,10 +1,10 @@
 {
   "name": "@klook/quokka-build",
-  "version": "0.0.0",
+  "version": "0.0.3",
   "description": "⚡ Fast package builder, powered by esbuild",
   "author": "Muluk ma<muluk.ma@klook.com>",
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://knpm.klook.io/-/web/detail/@klook/quokka-build",
   "repository": {
     "type": "git",
     "url": "git+https://git.klook.io/web-infra/klook-infra-tools.git"
@@ -62,19 +62,16 @@
     "test": "vitest",
     "build": "tsx ./src/cli.ts",
     "lint": "run-s lint:**",
+    "release": "bumpp",
     "lint:eslint": "TIMING=1 eslint \"*.{js,jsx,ts,tsx,md,json}\" --fix",
     "clean": "run-p clean:**",
     "clean:cache": "rimraf .turbo && rimraf dist",
     "clean:deps": "rimraf node_modules"
   },
   "peerDependencies": {
-    "sass": "^1",
     "vue-template-compiler": "^2"
   },
   "peerDependenciesMeta": {
-    "scss": {
-      "optional": true
-    },
     "vue-template-compiler": {
       "optional": true
     }
@@ -83,6 +80,7 @@
     "@vue/component-compiler": "^4.2.3",
     "@vue/component-compiler-utils": "^3.3.0",
     "citty": "^0.1.6",
+    "defu": "^6.1.4",
     "esbuild-sass-plugin": "^3.2.0",
     "hash-sum": "^2.0.0",
     "local-pkg": "^0.4.2",
@@ -92,7 +90,6 @@
   },
   "devDependencies": {
     "@types/hash-sum": "1.0.2",
-    "sass": "^1.51.0",
     "tsx": "^4.7.1",
     "vue": "2.6.11",
     "vue-template-compiler": "2.6.11"

@@ -6,7 +6,7 @@ export interface BuildOptions {
   // name?: string
   minify?: boolean | 'both'
   vue?: boolean | VuePluginOptions
-  scss?: boolean | import('sass').Options<'sync'>
+  scss?: boolean | import('sass').Options<'sync' | 'async'>
   dts?: Options['dts']
   outDir?: string
   platform?: 'web' | 'node'
