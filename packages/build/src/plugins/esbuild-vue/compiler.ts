@@ -1,10 +1,11 @@
 import { parse } from '@vue/component-compiler-utils'
-import * as templateCompiler from 'vue-template-compiler'
 import type {
   VueTemplateCompiler,
 } from '@vue/component-compiler-utils/dist/types'
+import { resolvePkg } from './resolve'
 
 export const compileToDescriptorAsync = async function (compiler, scopeId, filename, source, prependStyle) {
+  const templateCompiler = resolvePkg('vue-template-compiler')
   const descriptor = parse({
     source,
     filename,

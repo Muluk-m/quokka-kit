@@ -1,5 +1,3 @@
-import { assemble, createDefaultCompiler } from '@vue/component-compiler'
-import { generateCodeFrame } from 'vue-template-compiler'
 import type {
   ScriptOptions,
   StyleOptions,
@@ -11,6 +9,9 @@ import type {
 import {
   compileToDescriptorAsync,
 } from './compiler'
+import { resolvePkg } from './resolve'
+
+const { assemble, createDefaultCompiler } = resolvePkg('@vue/component-compiler')
 
 interface TemplateOptionsEsbuild extends TemplateOptions {
   compilerOptions: VueTemplateCompilerOptions & {
@@ -107,6 +108,8 @@ function getErrors(result) {
 }
 
 function getTemplateErrors(template) {
+  const { generateCodeFrame } = resolvePkg('vue-template-compiler')
+
   if (!template.errors)
     return []
 
