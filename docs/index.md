@@ -29,4 +29,5 @@ features:
   - icon: ⚒️
     title: Create
     details: 现代化的前端工程创建 cli 工具
+    link: ./quokka-create/getting-started
 ---

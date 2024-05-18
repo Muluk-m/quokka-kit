@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { SearchPlugin } from 'vitepress-plugin-search'
 import type { DefaultTheme } from 'vitepress'
+import type { PluginOption } from 'vite'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -9,7 +10,7 @@ export default defineConfig({
   description: 'Klook FE Infra tools',
   outDir: '../public',
   vite: {
-    plugins: [SearchPlugin()],
+    plugins: [SearchPlugin() as PluginOption],
   },
   srcDir: '.',
   head: [
@@ -23,6 +24,7 @@ export default defineConfig({
     sidebar: {
       'quokka-build/': { base: '/quokka-build/', items: sidebarGuide() },
       'quokka-standard': { base: '/quokka-standard/', items: sidebarStandard() },
+      'quokka-create': { base: '/quokka-create/', items: sidebarCreate() },
     },
 
     socialLinks: [
@@ -52,18 +54,9 @@ function nav(): DefaultTheme.NavItem[] {
       activeMatch: '/quokka-standard/',
     },
     {
-      text: 'Create (coming soon)',
-      link: '',
+      text: 'Create',
+      link: '/quokka-create/what-is-quokka-create',
       activeMatch: '/quokka-create/',
-    },
-    {
-      text: 'version',
-      items: [
-        {
-          text: '更新日志',
-          link: 'https://github.com/vuejs/vitepress/blob/main/CHANGELOG.md',
-        },
-      ],
     },
   ]
 }
@@ -123,6 +116,27 @@ function sidebarStandard(): DefaultTheme.SidebarItem[] {
       items: [
         { text: 'Cli', link: 'cli' },
         { text: 'package.json 配置', link: 'package-json' },
+      ],
+    },
+  ]
+}
+
+function sidebarCreate(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: '简介',
+      collapsed: false,
+      items: [
+        { text: '什么是 Quokka-create？', link: 'what-is-quokka-create' },
+        { text: '快速开始', link: 'getting-started' },
+      ],
+    },
+    {
+      text: '其他',
+      collapsed: false,
+      items: [
+        { text: '关于 CI', link: 'ci' },
+        { text: '关于 Docs', link: 'docs' },
       ],
     },
   ]
