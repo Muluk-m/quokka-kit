@@ -9,8 +9,9 @@
     "build": "quokka-build",
     "typecheck": "tsc --noEmit"
   },
-
-  "dependencies": {},
+  "dependencies": {
+    "@klook/quokka-build": "^0.0.8"
+  },
   "devDependencies": {
     "typescript": "^5.2.2"
   }

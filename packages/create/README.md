@@ -35,16 +35,16 @@ You can also directly specify the project name and the template you want to use 
 
 ```bash
 # npm 7+, extra double-dash is needed:
-npm create quokka@latest my-vue-app -- --template vue
+npm create quokka@latest my-quokka-app --template typescript
 
 # yarn
-yarn create quokka my-vue-app --template vue
+yarn create quokka my-quokka-app --template typescript
 
 # pnpm
-pnpm create quokka my-vue-app --template vue
+pnpm create quokka my-quokka-app --template typescript
 
 # Bun
-bun create quokka my-vue-app --template vue
+bun create quokka my-quokka-app --template typescript
 ```
 
 Currently supported template presets include:
@@ -55,7 +55,6 @@ Currently supported template presets include:
 - `react-app`
 - `react-components`
 - `react-components-docs`
-- `api-docs`
 - `typescript`
 - `typescript-docs`
 
