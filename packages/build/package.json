@@ -1,7 +1,7 @@
 {
   "name": "@klook/quokka-build",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "⚡ Fast package builder, powered by esbuild",
   "author": "Muluk ma<muluk.ma@klook.com>",
   "license": "MIT",
@@ -68,8 +68,8 @@
     "clean:deps": "rimraf node_modules"
   },
   "peerDependencies": {
-    "sass": "^1.51.0",
-    "vue-template-compiler": "2.5 | 2.6"
+    "sass": "^1",
+    "vue-template-compiler": "^2"
   },
   "peerDependenciesMeta": {
     "scss": {
