@@ -24,6 +24,10 @@ const main = defineCommand({
       alias: 'm',
       description: 'Minify bundle',
     },
+    'platform': {
+      type: 'string',
+      description: 'Target platform, "web" or "node"',
+    },
     'out-dir': {
       type: 'string',
       alias: 'd',
@@ -90,6 +94,9 @@ const main = defineCommand({
 
     if (args.minify)
       options.minify = true
+
+    if (args.platform)
+      options.platform = args.platform as 'web' | 'node'
 
     if (args.vue)
       options.vue = true
