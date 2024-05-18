@@ -1,7 +1,7 @@
 {
   "name": "@klook/quokka-build",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "⚡ Fast package builder, powered by esbuild",
   "author": "Muluk ma<muluk.ma@klook.com>",
   "license": "MIT",
@@ -51,7 +51,8 @@
     "quokka-build": "dist/cli.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "engines": {
     "node": ">=16"
@@ -67,7 +68,7 @@
     "clean:deps": "rimraf node_modules"
   },
   "peerDependencies": {
-    "scss": "^0.2",
+    "sass": "^1.51.0",
     "vue-template-compiler": "2.5 | 2.6"
   },
   "peerDependenciesMeta": {
@@ -84,11 +85,13 @@
     "citty": "^0.1.6",
     "hash-sum": "^2.0.0",
     "local-pkg": "^0.4.2",
+    "magic-string": "^0.30.8",
     "tsup": "^8.0.2",
     "unconfig": "^0.3.12"
   },
   "devDependencies": {
     "@types/hash-sum": "1.0.2",
+    "sass": "^1.51.0",
     "tsx": "^4.7.1",
     "vue": "2.6.11",
     "vue-template-compiler": "2.6.11"

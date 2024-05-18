@@ -1,12 +1,26 @@
 import process from 'node:process'
 import { build as tsup } from 'tsup'
 import type { Options } from 'tsup'
+import type { BuildOptions as EsbuildOptions } from 'esbuild'
 import vue2 from './plugins/esbuild-vue'
 import scss from './plugins/esbuild-scss'
 import { builderName, targetNode, targetWeb } from './constants'
 import type { BuildOptionsResolved } from './utils'
 import { importConfig } from './utils'
 import type { BuildOptions } from './config'
+
+function modifyEsbuildOptions(options: EsbuildOptions, config: BuildOptions): Options['esbuildOptions'] {
+  return (_options) => {
+    if (config.define)
+      _options.define = config.define
+
+    if (config.alias)
+      _options.alias = config.alias
+
+    for (const [key, val] of Object.entries(options))
+      _options[key] = val
+  }
+}
 
 export async function build(userConfig: BuildOptions = {}) {
   const pkgDir = process.cwd()
@@ -48,7 +62,7 @@ export async function build(userConfig: BuildOptions = {}) {
     }
 
     if (config.dts)
-      options.dts = true
+      options.dts = config.dts
 
     if (config.entry)
       options.entry = config.entry
@@ -61,9 +75,9 @@ export async function build(userConfig: BuildOptions = {}) {
       tasks.push(
         tsup({
           ...options,
-          esbuildOptions(options) {
-            options.entryNames = `[dir]/[name]`
-          },
+          esbuildOptions: modifyEsbuildOptions({
+            entryNames: `[dir]/[name]`,
+          }, config),
         }),
       )
     }
@@ -73,9 +87,9 @@ export async function build(userConfig: BuildOptions = {}) {
           ...options,
           name: 'klook',
           minify: true,
-          esbuildOptions(options) {
-            options.entryNames = `[dir]/[name].min`
-          },
+          esbuildOptions: modifyEsbuildOptions({
+            entryNames: `[dir]/[name].min`,
+          }, config),
         }),
       )
     }

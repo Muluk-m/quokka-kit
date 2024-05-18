@@ -1,4 +1,4 @@
-import { dirname, relative, resolve } from 'path'
+import { dirname, relative } from 'path'
 import fs from 'fs'
 import process from 'node:process'
 import { basename } from 'node:path'
