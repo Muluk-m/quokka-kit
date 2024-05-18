@@ -1,4 +1,5 @@
-import { defineCommand, runMain, showUsage } from 'citty'
+#!/usr/bin/env node
+import { defineCommand, runMain } from 'citty'
 import type { Format } from 'tsup'
 import { description, engines, version } from '../package.json'
 import { builderName } from './constants'
