@@ -1,0 +1,65 @@
+{
+  "name": "klook-infra-tools",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@8.15.5",
+  "description": "A collection of modern high-performance tools",
+  "author": "Muluk ma<muluk.ma@klook.com>",
+  "license": "MIT",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://git.klook.io/web-infra/klook-infra-tools.git"
+  },
+  "bugs": {
+    "url": "https://git.klook.io/web-infra/klook-infra-tools.git/issues"
+  },
+  "keywords": [
+    "tools",
+    "build",
+    "esbuild",
+    "infra"
+  ],
+  "engines": {
+    "node": ">=18.19.0"
+  },
+  "scripts": {
+    "stub:core": "turbo stub --filter=./packages/core",
+    "build:core": "turbo build --filter=./packages/core...",
+    "dev:ui-story": "turbo dev --filter=./packages/ui-story",
+    "prepare:type": "turbo prepare:type --filter='./packages/*'",
+    "dev": "NODE_OPTIONS=\"--max-old-space-size=8192\" nr prepare:type && nr build:ui && turbo stub --concurrency 20",
+    "build": "turbo build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "release": "bumpp -r && nr build && pnpm -r publish --access public",
+    "release:beta": "bumpp -r && nr build && pnpm -r publish --access public --tag beta",
+    "prepare": "simple-git-hooks || true",
+    "prepublishOnly": "bash ./bin/prepublishOnly.sh",
+    "test": "vitest --environment jsdom",
+    "play": "turbo dev --filter=./packages/playground/basic",
+    "docs": "pnpm -C docs run docs:dev",
+    "docs:build": "pnpm -C docs run docs:build"
+  },
+  "devDependencies": {
+    "@klook/quokka-build": "workspace:*",
+    "@klook/standard": "^0.0.6",
+    "bumpp": "^9.4.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-format": "^0.1.0",
+    "lint-staged": "^15.2.2",
+    "simple-git-hooks": "^2.11.0",
+    "tsup": "^8.0.2",
+    "turbo": "^1.13.0",
+    "typescript": "~5.4.3",
+    "vite": "^5.2.6",
+    "vitest": "^1.4.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}

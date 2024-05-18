@@ -1,0 +1,90 @@
+{
+  "name": "@klook/quokka-build",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "⚡ Fast package builder, powered by esbuild",
+  "author": "Muluk ma<muluk.ma@klook.com>",
+  "license": "MIT",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://git.klook.io/web-infra/klook-infra-tools.git"
+  },
+  "bugs": {
+    "url": "https://git.klook.io/web-infra/klook-infra-tools.git/issues"
+  },
+  "keywords": [
+    "pnpm",
+    "changesets",
+    "build"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "dev": "./src/index.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./cli": {
+      "dev": "./src/cli.ts",
+      "import": "./dist/cli.js",
+      "require": "./dist/cli.cjs"
+    },
+    "./*": "./*"
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
+  "bin": {
+    "quokka-build": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "dev": "quokka-build --watch",
+    "test": "vitest",
+    "build": "quokka-build",
+    "lint": "run-s lint:**",
+    "lint:eslint": "TIMING=1 eslint \"*.{js,jsx,ts,tsx,md,json}\" --fix",
+    "clean": "run-p clean:**",
+    "clean:cache": "rimraf .turbo && rimraf dist",
+    "clean:deps": "rimraf node_modules"
+  },
+  "peerDependencies": {
+    "scss": "^0.2",
+    "vue-template-compiler": "2.5 | 2.6"
+  },
+  "peerDependenciesMeta": {
+    "scss": {
+      "optional": true
+    },
+    "vue-template-compiler": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@vue/component-compiler": "^4.2.3",
+    "@vue/component-compiler-utils": "^3.3.0",
+    "citty": "^0.1.6",
+    "hash-sum": "^2.0.0",
+    "local-pkg": "^0.4.2",
+    "tsup": "^8.0.2",
+    "unconfig": "^0.3.12"
+  },
+  "devDependencies": {
+    "@types/hash-sum": "1.0.2",
+    "vue": "2.6.11",
+    "vue-template-compiler": "2.6.11"
+  }
+}
