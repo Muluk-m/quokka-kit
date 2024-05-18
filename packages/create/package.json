@@ -1,7 +1,7 @@
 {
   "name": "@klook/quokka-create",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "author": "Muluk ma<muluk.ma@klook.com>",
   "license": "MIT",
   "homepage": "https://knpm.klook.io/-/web/detail/@klook/quokka-build",
