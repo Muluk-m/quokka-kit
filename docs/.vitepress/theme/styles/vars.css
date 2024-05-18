@@ -1,0 +1,29 @@
+/**
+ * Component: Button
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-button-brand-text: var(--c-black);
+  --vp-button-brand-hover-text: var(--c-black-darker);
+  --vp-button-brand-active-text: var(--c-black-darker);
+  --vp-button-brand-active-bg: var(--vp-button-brand-bg);
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-home-hero-name-color: transparent !important;
+  --vp-home-hero-name-background: linear-gradient(
+    292deg,
+    #a47e5d 70%,
+    #422f1d
+  ) !important;
+  --vp-home-hero-image-background-image: linear-gradient(
+    15deg,
+    #422f1d 65%,
+    #a47e5d 30%
+  ) !important;
+  --vp-home-hero-image-filter: blur(40px) !important;
+}

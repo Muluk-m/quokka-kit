@@ -1,0 +1,28 @@
+stages:
+  - deploy
+
+variables:
+  PNPM_VERSION: 8
+
+cache:
+  paths:
+    - ~/.pnpm-store
+
+before_script:
+  - curl -f https://get.pnpm.io/v6.js | node - add --global pnpm@$PNPM_VERSION
+
+pages:
+  image: registry.klook.io/node/node:16
+  stage: deploy
+  only:
+    - master
+  tags:
+    - docker
+  script:
+    - pnpm install -no-frozen-lockfile
+    - rm -rf public
+    - pnpm run docs:build
+  allow_failure: true
+  artifacts:
+    paths:
+      - public
