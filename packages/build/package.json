@@ -1,7 +1,6 @@
 {
   "name": "@klook/quokka-build",
-  "type": "module",
-  "version": "0.0.3-beta.0",
+  "version": "0.0.0",
   "description": "⚡ Fast package builder, powered by esbuild",
   "author": "Muluk ma<muluk.ma@klook.com>",
   "license": "MIT",
@@ -22,22 +21,23 @@
   "exports": {
     ".": {
       "dev": "./src/index.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     },
     "./config": {
       "dev": "./src/config.ts",
-      "import": "./dist/config.js",
-      "require": "./dist/config.cjs"
+      "import": "./dist/config.mjs",
+      "require": "./dist/config.js"
     },
     "./cli": {
       "dev": "./src/cli.ts",
-      "import": "./dist/cli.js",
-      "require": "./dist/cli.cjs"
+      "import": "./dist/cli.mjs",
+      "require": "./dist/cli.js"
     },
     "./*": "./*"
   },
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
@@ -83,6 +83,7 @@
     "@vue/component-compiler": "^4.2.3",
     "@vue/component-compiler-utils": "^3.3.0",
     "citty": "^0.1.6",
+    "esbuild-sass-plugin": "^3.2.0",
     "hash-sum": "^2.0.0",
     "local-pkg": "^0.4.2",
     "magic-string": "^0.30.8",
