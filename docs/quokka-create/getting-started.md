@@ -4,19 +4,43 @@
 
 - [Node.js](https://nodejs.org/) 16 及以上版本。
 
-## Usage {#setup-wizard}
+## 全局安装 {#setup-wizard}
 
 ::: code-group
 
 ```sh [npm]
+npm i -g @klook/quokka-create
+```
+
+```sh [pnpm]
+pnpm i -g @klook/quokka-create
+```
+
+```sh [yarn]
+yarn add -g @klook/quokka-create
+```
+
+:::
+
+## 使用 {#usage}
+
+::: code-group
+
+```sh [npm]
+quokka-create
+# or
 npx @klook/quokka-create@latest
 ```
 
 ```sh [pnpm]
+quokka-create
+# or
 pnpm dlx @klook/quokka-create@latest
 ```
 
 ```sh [yarn]
+quokka-create
+# or
 yarn dlx @klook/quokka-create@latest
 ```
 
