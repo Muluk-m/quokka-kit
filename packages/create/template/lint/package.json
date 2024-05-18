@@ -1,0 +1,27 @@
+{
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "simple-git-hooks || true"
+  },
+  "devDependencies": {
+    "@klook/quokka-build": "^0.0.8",
+    "@klook/quokka-standard": "^0.0.13",
+    "eslint": "^8.57.0",
+    "eslint-plugin-format": "^0.1.0",
+    "lint-staged": "^15.2.2",
+    "simple-git-hooks": "^2.11.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "pnpm quokka-standard commitlint"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  },
+  "commitlint": {
+    "extends": [
+      "@klook/quokka-standard/commitlint.config"
+    ]
+  }
+}

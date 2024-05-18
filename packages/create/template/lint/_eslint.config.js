@@ -6,8 +6,6 @@ export default eslint({
     '**/dist/**',
     'node_modules',
     '**/node_modules/**',
-    'packages/create/template-*/**/*',
-    'packages/create/template/**/*',
   ],
   formatters: true,
 })

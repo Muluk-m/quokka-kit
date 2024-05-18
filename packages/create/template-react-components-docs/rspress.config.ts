@@ -7,9 +7,20 @@ export default defineConfig({
   title: 'Rspress',
   description: 'Rspack-based Static Site Generator',
   icon: '/rspress-icon.png',
+  outDir: '../../public', // relative to root
   logo: {
     light: '/rspress-light-logo.png',
     dark: '/rspress-dark-logo.png',
+  },
+  builderConfig: {
+    source: {
+      alias: {
+        '@src': './src',
+      },
+    },
+    output: {
+      cleanDistPath: true,
+    }
   },
   themeConfig: {
     socialLinks: [

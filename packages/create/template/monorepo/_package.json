@@ -1,0 +1,44 @@
+{
+  "name": "quokka-react-components-starter",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "dev": "quokka-build --watch",
+    "build": "quokka-build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "release": "bumpp",
+    "prepare": "simple-git-hooks || true"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@klook/quokka-build": "^0.0.8",
+    "@rspress/plugin-playground": "^1.19.1",
+    "bumpp": "^9.4.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-format": "^0.1.0",
+    "lint-staged": "^15.2.2",
+    "react": "^18.3.1",
+    "rspress": "^1.19.1",
+    "simple-git-hooks": "^2.11.0",
+    "typescript": "^5.2.2"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "pnpm quokka-standard commitlint"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  },
+  "commitlint": {
+    "extends": [
+      "@klook/quokka-standard/commitlint.config"
+    ]
+  }
+}

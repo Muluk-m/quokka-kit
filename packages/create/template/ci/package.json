@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "prepublishOnly": "bash ./bin/prepublishOnly.sh"
+  }
+}

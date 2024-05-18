@@ -15,6 +15,7 @@
   },
   "files": [
     "dist",
+    "template",
     "template-*"
   ],
   "engines": {
@@ -24,6 +25,9 @@
     "dev": "quokka-build --watch",
     "build": "quokka-build",
     "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "gradient-string": "^2.0.2"
   },
   "devDependencies": {
     "@types/cross-spawn": "^6.0.6",

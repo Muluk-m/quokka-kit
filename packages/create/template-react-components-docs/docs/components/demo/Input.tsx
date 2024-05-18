@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Input } from '../../../src/index'
+import { useState } from 'react'
+import { Input } from '@src/index'
 
 export default function Demo() {
   const [value, setValue] = useState('please input')
