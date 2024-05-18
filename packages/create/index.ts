@@ -123,9 +123,22 @@ const renameFiles: Record<string, string | undefined> = {
 
 const defaultTargetDir = 'quokka-project'
 
+const MONOREPO_FILE = ['pnpm-workspace.yaml', 'lerna.json']
+function isMonorepo(root: string) {
+  const pkgPath = path.join(root, 'package.json')
+
+  const pkgExist = fs.existsSync(pkgPath)
+  return (
+    pkgExist
+    && (MONOREPO_FILE.some((file) => {
+      return fs.existsSync(path.join(root, file))
+    })
+    )
+  )
+}
+
 const isProjectInMonorepo = function (): boolean {
-  const lernaJsonPath = path.join(cwd, 'lerna.json')
-  return fs.existsSync(lernaJsonPath)
+  return isMonorepo(cwd) || isMonorepo(path.resolve(cwd, '..'))
 }
 
 async function init() {
@@ -150,6 +163,7 @@ async function init() {
     | 'packageName'
     | 'framework'
     | 'variant'
+    | 'monorepo'
     | 'needsLint'
     | 'needsCi'
     | 'needsTest'
@@ -247,8 +261,16 @@ async function init() {
             }),
         },
         {
+          name: 'monorepo',
+          type: () => isProjectInMonorepo() ? null : 'toggle',
+          message: reset('Create it as monorepo?'),
+          initial: false,
+          active: 'Yes',
+          inactive: 'No',
+        },
+        {
           name: 'needsLint',
-          type: 'toggle',
+          type: (_, { monorepo }) => monorepo ? null : 'toggle',
           message: reset('Add linting?'),
           initial: false,
           active: 'Yes',
@@ -256,7 +278,7 @@ async function init() {
         },
         {
           name: 'needsCi',
-          type: () => isProjectInMonorepo() ? null : 'toggle',
+          type: (_, { monorepo }) => monorepo ? null : 'toggle',
           message: reset('Add CI config?'),
           initial: false,
           active: 'Yes',
@@ -264,7 +286,7 @@ async function init() {
         },
         {
           name: 'needsTest',
-          type: 'toggle',
+          type: (_, { monorepo }) => monorepo ? null : 'toggle',
           message: reset('Add testing?'),
           initial: false,
           active: 'Yes',
@@ -284,11 +306,11 @@ async function init() {
   }
 
   // user choice associated with prompts
-  const { framework, overwrite, packageName, variant } = result
+  const { framework, overwrite, packageName, variant, monorepo } = result
 
-  const needsLint = argv.lint || result.needsLint
-  const needsCi = argv.ci || result.needsCi
-  const needsTest = argv.test || result.needsTest
+  const needsLint = argv.lint || monorepo || result.needsLint
+  const needsCi = argv.ci || monorepo || result.needsCi
+  const needsTest = argv.test || !monorepo || result.needsTest
 
   const root = path.join(cwd, targetDir)
 
@@ -322,12 +344,31 @@ async function init() {
   if (needsTest)
     render('test')
 
-  // Render template files.
-  renderTemplate(
-    path.resolve(__dirname, `template-${template}`),
-    root,
-    callbacks,
-  )
+  if (monorepo) {
+    const packageDir = path.resolve(root, 'packages', targetDir)
+
+    render('monorepo')
+
+    renderTemplate(
+      path.resolve(__dirname, `template-${template}`),
+      packageDir,
+      callbacks,
+    )
+
+    renderTemplate(
+      path.resolve(templateRoot, 'base'),
+      packageDir,
+      callbacks,
+    )
+  }
+  else {
+    // Render template files.
+    renderTemplate(
+      path.resolve(__dirname, `template-${template}`),
+      monorepo ? path.resolve(root, 'packages', targetDir) : root,
+      callbacks,
+    )
+  }
 
   const dataStore = {}
 
