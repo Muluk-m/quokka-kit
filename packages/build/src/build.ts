@@ -4,7 +4,8 @@ import { sassPlugin } from 'esbuild-sass-plugin'
 import defu from 'defu'
 import type { Options } from 'tsup'
 import type { BuildOptions as EsbuildOptions } from 'esbuild'
-import vue2 from './plugins/esbuild-vue'
+import resolveFrom from 'resolve-from'
+
 import { builderName, targetNode, targetWeb } from './constants'
 import type { BuildOptionsResolved } from './utils'
 import { importConfig, normalizeConfig } from './utils'
@@ -40,6 +41,8 @@ const buildItem = async (config: BuildOptionsResolved) => {
   options.esbuildPlugins ||= []
 
   if (config.vue) {
+    const id = resolveFrom(process.cwd(), './plugins/esbuild-vue')
+    const vue2 = await import(id)
     options.esbuildPlugins.push(
       vue2(typeof config.vue !== 'object'
         ? {

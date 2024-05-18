@@ -71,7 +71,9 @@ const main = defineCommand({
 
     const options = {
       tsup: {},
-    } as BuildOptions & { entry?: string }
+    } as BuildOptions
+    if (args.entry)
+      options.entry = args.entry.split(',')
 
     if (args.dts)
       options.dts = true

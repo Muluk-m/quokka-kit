@@ -85,6 +85,7 @@
     "hash-sum": "^2.0.0",
     "local-pkg": "^0.4.2",
     "magic-string": "^0.30.8",
+    "resolve-from": "^5.0.0",
     "tsup": "^8.0.2",
     "unconfig": "^0.3.12"
   },

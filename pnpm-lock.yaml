@@ -74,6 +74,9 @@ importers:
       magic-string:
         specifier: ^0.30.8
         version: 0.30.8
+      resolve-from:
+        specifier: ^5.0.0
+        version: 5.0.0
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(postcss@8.4.38)(typescript@5.4.3)
