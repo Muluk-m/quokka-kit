@@ -52,7 +52,7 @@ function nav(): DefaultTheme.NavItem[] {
       activeMatch: '/quokka-standard/',
     },
     {
-      text: 'Standard (coming soon)',
+      text: 'Create (coming soon)',
       link: '',
       activeMatch: '/quokka-create/',
     },
