@@ -1,0 +1,7 @@
+{
+  "types": [
+    "vite/client",
+    "vitest/globals"
+  ],
+  "include": ["__tests__"]
+}

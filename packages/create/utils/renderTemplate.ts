@@ -41,6 +41,15 @@ function renderTemplate(src, dest, callbacks) {
     return
   }
 
+  if (filename === 'tsconfig.json' && fs.existsSync(dest)) {
+    // merge instead of overwriting
+    const existing = JSON.parse(fs.readFileSync(dest, 'utf8'))
+    const newTsconfig = JSON.parse(fs.readFileSync(src, 'utf8'))
+    const tsconfig = deepMerge(existing, newTsconfig)
+    fs.writeFileSync(dest, `${JSON.stringify(tsconfig, null, 2)}\n`)
+    return
+  }
+
   if (filename === 'extensions.json' && fs.existsSync(dest)) {
     // merge instead of overwriting
     const existing = JSON.parse(fs.readFileSync(dest, 'utf8'))
@@ -52,9 +61,9 @@ function renderTemplate(src, dest, callbacks) {
 
   if (filename === 'settings.json' && fs.existsSync(dest)) {
     // merge instead of overwriting
-    const settings = JSON.parse(fs.readFileSync(dest, 'utf8'))
+    const existing = JSON.parse(fs.readFileSync(dest, 'utf8'))
     const newSettings = JSON.parse(fs.readFileSync(src, 'utf8'))
-    const _extensions = deepMerge(settings, newSettings)
+    const settings = deepMerge(existing, newSettings)
     fs.writeFileSync(dest, `${JSON.stringify(settings, null, 2)}\n`)
     return
   }
@@ -66,12 +75,10 @@ function renderTemplate(src, dest, callbacks) {
 
   if (filename.startsWith('_eslint')) {
     // rename `_file` to `file`
-    dest = path.resolve(path.dirname(dest), filename.replace(/^_eslint/, 'eslint'))
+    dest = path.resolve(path.dirname(dest), filename.replace(/^_(\w+)/, '$1'))
   }
 
   if (filename === '_gitignore' && fs.existsSync(dest)) {
-    dest = path.resolve(path.dirname(dest), filename.replace(/^_/, '.'))
-
     // append to existing .gitignore
     const existing = fs.readFileSync(dest, 'utf8')
     const newGitignore = fs.readFileSync(src, 'utf8')

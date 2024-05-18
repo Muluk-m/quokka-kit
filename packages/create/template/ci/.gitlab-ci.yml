@@ -13,6 +13,13 @@ before_script:
   - npm config set @klook:registry=https://knpm.klook.io/ --location project
   - npm config set //knpm.klook.io/:_authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFsX2dyb3VwcyI6WyJrbG9va3VzZXIxIl0sIm5hbWUiOiJrbG9va3VzZXIxIiwiZ3JvdXBzIjpbImtsb29rdXNlcjEiLCIkYWxsIiwiJGF1dGhlbnRpY2F0ZWQiLCJAYWxsIiwiQGF1dGhlbnRpY2F0ZWQiLCJhbGwiLCJrbG9va3VzZXIxIl0sImlhdCI6MTYwMzI2MTU5NCwibmJmIjoxNjAzMjYxNTk0LCJleHAiOjQ3NTkwMjE1OTR9.ozCIv4PITRUE4V34nuTEu-ZJBzckbEvvNQABt-l1mlk --location project
 
+include:
+  - project: 'ops-public/ci-templates'
+    file: 'build/multiple/node/web-base.yml'
+
+cr-robot:
+  extends: .cr-robot
+
 pages:
   image: registry.klook.io/node/node:16
   stage: deploy

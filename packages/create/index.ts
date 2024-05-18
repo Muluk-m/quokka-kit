@@ -287,8 +287,8 @@ async function init() {
   const { framework, overwrite, packageName, variant } = result
 
   const needsLint = argv.lint || result.needsLint
-  const needsCi = argv.ci
-  const needsTest = argv.test
+  const needsCi = argv.ci || result.needsCi
+  const needsTest = argv.test || result.needsTest
 
   const root = path.join(cwd, targetDir)
 
@@ -321,6 +321,13 @@ async function init() {
 
   if (needsTest)
     render('test')
+
+  // Render template files.
+  renderTemplate(
+    path.resolve(__dirname, `template-${template}`),
+    root,
+    callbacks,
+  )
 
   const dataStore = {}
 
@@ -368,11 +375,6 @@ async function init() {
   }
 
   console.log(`\nScaffolding project in ${root}...`)
-
-  const templateDir = path.resolve(__dirname, `template-${template}`)
-
-  // Render template files.
-  renderTemplate(templateDir, root, callbacks)
 
   const write = (file: string, content?: string) => {
     const targetPath = path.join(root, renameFiles[file] ?? file)
