@@ -4,7 +4,6 @@ import type { Options } from 'sass'
 import type { Plugin } from 'esbuild'
 
 export default (opts: Options<'sync'>): Plugin => {
-  console.error('213213')
   return {
     name: 'sass',
     setup(build) {

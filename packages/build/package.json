@@ -15,7 +15,7 @@
   },
   "keywords": [
     "pnpm",
-    "changesets",
+    "esbuild",
     "build"
   ],
   "sideEffects": false,
@@ -24,6 +24,11 @@
       "dev": "./src/index.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./config": {
+      "dev": "./src/config.ts",
+      "import": "./dist/config.js",
+      "require": "./dist/config.cjs"
     },
     "./cli": {
       "dev": "./src/cli.ts",
@@ -52,9 +57,9 @@
     "node": ">=16"
   },
   "scripts": {
-    "dev": "quokka-build --watch",
+    "dev": "tsx ./src/cli.ts --watch",
     "test": "vitest",
-    "build": "quokka-build",
+    "build": "tsx ./src/cli.ts",
     "lint": "run-s lint:**",
     "lint:eslint": "TIMING=1 eslint \"*.{js,jsx,ts,tsx,md,json}\" --fix",
     "clean": "run-p clean:**",
@@ -84,6 +89,7 @@
   },
   "devDependencies": {
     "@types/hash-sum": "1.0.2",
+    "tsx": "^4.7.1",
     "vue": "2.6.11",
     "vue-template-compiler": "2.6.11"
   }

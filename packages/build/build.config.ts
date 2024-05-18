@@ -11,7 +11,8 @@ export default defineConfig(
     {
       platform: 'node',
       dts: true,
-      entry: ['src/index.ts'],
+      entry: ['src/config.ts', 'src/index.ts'],
+      format: ['esm', 'cjs'],
     },
   ],
 )
