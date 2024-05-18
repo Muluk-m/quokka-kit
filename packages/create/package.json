@@ -1,0 +1,38 @@
+{
+  "name": "@klook/quokka-create",
+  "type": "module",
+  "version": "0.0.1",
+  "author": "Muluk ma<muluk.ma@klook.com>",
+  "license": "MIT",
+  "homepage": "https://knpm.klook.io/-/web/detail/@klook/quokka-build",
+  "repository": {
+    "type": "git",
+    "url": "git+https://git.klook.io/web-infra/klook-infra-tools.git"
+  },
+  "bin": {
+    "create-quokka": "./dist/index.cjs",
+    "quokka-create": "./dist/index.cjs"
+  },
+  "files": [
+    "dist",
+    "template-*"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "dev": "quokka-build --stub",
+    "build": "quokka-build",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/cross-spawn": "^6.0.6",
+    "@types/fs-extra": "^11.0.4",
+    "@types/minimist": "^1.2.5",
+    "@types/prompts": "^2.4.9",
+    "cross-spawn": "^7.0.3",
+    "kolorist": "^1.8.0",
+    "minimist": "^1.2.8",
+    "prompts": "^2.4.2"
+  }
+}
