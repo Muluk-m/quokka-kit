@@ -77,21 +77,21 @@
     }
   },
   "dependencies": {
-    "@vue/component-compiler": "^4.2.3",
-    "@vue/component-compiler-utils": "^3.3.0",
-    "citty": "^0.1.6",
-    "defu": "^6.1.4",
-    "esbuild-sass-plugin": "^3.2.0",
-    "hash-sum": "^2.0.0",
+    "@vue/component-compiler": "catalog:",
+    "@vue/component-compiler-utils": "catalog:",
+    "citty": "catalog:",
+    "defu": "catalog:",
+    "esbuild-sass-plugin": "catalog:",
+    "hash-sum": "catalog:",
     "local-pkg": "^0.4.2",
-    "magic-string": "^0.30.8",
-    "tsup": "^8.0.2",
-    "unconfig": "^0.3.12"
+    "magic-string": "catalog:",
+    "tsup": "catalog:",
+    "unconfig": "catalog:"
   },
   "devDependencies": {
-    "@types/hash-sum": "1.0.2",
-    "tsx": "^4.7.1",
+    "@types/hash-sum": "catalog:",
+    "tsx": "catalog:",
     "vue": "2.6.11",
-    "vue-template-compiler": "2.6.11"
+    "vue-template-compiler": "catalog:"
   }
 }

@@ -28,17 +28,17 @@
     "release": "bumpp"
   },
   "dependencies": {
-    "gradient-string": "^2.0.2"
+    "gradient-string": "catalog:"
   },
   "devDependencies": {
-    "@types/cross-spawn": "^6.0.6",
-    "@types/fs-extra": "^11.0.4",
-    "@types/minimist": "^1.2.5",
-    "@types/prompts": "^2.4.9",
-    "@types/react": "^18.3.1",
-    "cross-spawn": "^7.0.3",
-    "kolorist": "^1.8.0",
-    "minimist": "^1.2.8",
-    "prompts": "^2.4.2"
+    "@types/cross-spawn": "catalog:",
+    "@types/fs-extra": "catalog:",
+    "@types/minimist": "catalog:",
+    "@types/prompts": "catalog:",
+    "@types/react": "catalog:",
+    "cross-spawn": "catalog:",
+    "kolorist": "catalog:",
+    "minimist": "catalog:",
+    "prompts": "catalog:"
   }
 }
