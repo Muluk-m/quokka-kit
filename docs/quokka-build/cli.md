@@ -54,7 +54,7 @@ quokka-build -m
 如果你需要在应用工程中实时调试包, 可以尝试指定输出目录
 
 ```shell
-quokka-build --watch -d <.../node_modules/@klook/your-pkg-name/dist>
+quokka-build --watch -d <.../node_modules/@nain/your-pkg-name/dist>
 ```
 
 ## `--vue` 开启 vue loader
