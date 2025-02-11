@@ -1,8 +1,8 @@
 # Quokka-Standard 是什么？
 
-- 📝 klook FE 研发规范体系
+- 📝 研发规范体系
 - ⚙️ 提供配置文件导出, 例如 eslint.config、stlyelint.config、commitlint.config
-- 🛠️ 提供 cli 能力来快速集成 `@klook/quokka-standard`
+- 🛠️ 提供 cli 能力来快速集成 `@nain/quokka-standard`
 
 ## 特点
 

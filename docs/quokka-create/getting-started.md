@@ -9,15 +9,15 @@
 ::: code-group
 
 ```sh [npm]
-npm i -g @klook/quokka-create
+npm i -g @nain/quokka-create
 ```
 
 ```sh [pnpm]
-pnpm i -g @klook/quokka-create
+pnpm i -g @nain/quokka-create
 ```
 
 ```sh [yarn]
-yarn add -g @klook/quokka-create
+yarn add -g @nain/quokka-create
 ```
 
 :::
@@ -29,19 +29,19 @@ yarn add -g @klook/quokka-create
 ```sh [npm]
 quokka-create
 # or
-npx @klook/quokka-create@latest
+npx @nain/quokka-create@latest
 ```
 
 ```sh [pnpm]
 quokka-create
 # or
-pnpm dlx @klook/quokka-create@latest
+pnpm dlx @nain/quokka-create@latest
 ```
 
 ```sh [yarn]
 quokka-create
 # or
-yarn dlx @klook/quokka-create@latest
+yarn dlx @nain/quokka-create@latest
 ```
 
 :::
@@ -61,7 +61,7 @@ cd ./packages
 2. 运行 cli
 
 ```bash
-npx @klook/quokka-create@latest
+npx @nain/quokka-create@latest
 ```
 
 3. 选择对应的模板
@@ -79,7 +79,7 @@ cd ~/<target_dir>
 2. 运行 cli
 
 ```bash
-npx @klook/quokka-create@latest
+npx @nain/quokka-create@latest
 ```
 
 3. 选择对应的模板
@@ -104,7 +104,7 @@ cd ~/<target_dir>
 2. 运行 cli
 
 ```bash
-npx @klook/quokka-create@latest
+npx @nain/quokka-create@latest
 ```
 
 3. 选择对应的模板

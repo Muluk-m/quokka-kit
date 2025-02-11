@@ -43,7 +43,7 @@ const buildItem = async (config: BuildOptionsResolved) => {
 
   if (config.vue) {
     const vue2 = (await import('./plugins/esbuild-vue')).default
-    const klkTokenPath = './node_modules/@klook/klook-ui/src/styles/token/index.scss'
+    const klkTokenPath = './node_modules/@nain/ui/src/styles/token/index.scss'
     const defaultOptions: VuePluginOptions = {
       extractCss: true,
     }
@@ -100,7 +100,7 @@ const buildItem = async (config: BuildOptionsResolved) => {
     tasks.push(
       tsup({
         ...options,
-        name: 'klook',
+        name: 'quokka',
         minify: true,
         esbuildOptions: modifyEsbuildOptions({
           entryNames: `[dir]/[name].min`,

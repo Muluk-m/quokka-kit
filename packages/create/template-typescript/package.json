@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@klook/quokka-build": "^0.0.8"
+    "@nain/quokka-build": "^0.0.8"
   },
   "devDependencies": {
     "typescript": "^5.2.2"

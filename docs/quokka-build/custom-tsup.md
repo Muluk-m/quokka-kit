@@ -10,7 +10,7 @@ tsup 提供丰富的构建配置, Quokka-build 在 tsup 之上做了封装, 如�
 
 ```ts
 // build.config.ts
-import { defineConfig } from '@klook/quokka-build/config'
+import { defineConfig } from '@nain/quokka-build/config'
 
 export default defineConfig({
   entry: ['src/index.ts'],
@@ -31,7 +31,7 @@ export default defineConfig({
 
 ```ts
 // build.config.ts
-import { defineConfig } from '@klook/quokka-build/config'
+import { defineConfig } from '@nain/quokka-build/config'
 
 export default defineConfig({
   entry: ['src/index.ts'],
@@ -48,7 +48,7 @@ export default defineConfig({
 ```ts
 // build.config.ts
 import http from 'http'
-import { defineConfig } from '@klook/quokka-build/config'
+import { defineConfig } from '@nain/quokka-build/config'
 
 export default defineConfig({
   entry: ['src/index.ts'],
@@ -89,7 +89,7 @@ type Loader =
 
 ```ts
 // build.config.ts
-import { defineConfig } from '@klook/quokka-build/config'
+import { defineConfig } from '@nain/quokka-build/config'
 
 export default defineConfig({
   entry: ['src/index.ts'],

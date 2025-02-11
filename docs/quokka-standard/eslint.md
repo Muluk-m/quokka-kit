@@ -11,13 +11,13 @@
 我们提供了一个 CLI 工具来帮助您设置项目，或者从遗留配置迁移到新的配置。
 
 ```bash
-npx @klook/quokka-standard@latest
+npx @nain/quokka-standard@latest
 ```
 
 ### Install
 
 ```bash
-pnpm i -D @klook/quokka-standard
+pnpm i -D @nain/quokka-standard
 ```
 
 ### Create ESlint config file
@@ -26,7 +26,7 @@ With [`"type": "module"`](https://nodejs.org/api/packages.html#type) in `package
 
 ```js
 // eslint.config.js
-import eslint from '@klook/quokka-standard'
+import eslint from '@nain/quokka-standard'
 
 export default eslint()
 ```
@@ -35,7 +35,7 @@ With CJS:
 
 ```js
 // eslint.config.js
-const eslint = require('@klook/quokka-standard').default
+const eslint = require('@nain/quokka-standard').default
 
 module.exports = eslint()
 ```
@@ -113,7 +113,7 @@ Normally you only need to import the `eslint` preset:
 
 ```js
 // eslint.config.js
-import eslint from '@klook/quokka-standard'
+import eslint from '@nain/quokka-standard'
 
 export default eslint()
 ```
@@ -122,7 +122,7 @@ And that's it! Or you can configure each integration individually, for example:
 
 ```js
 // eslint.config.js
-import eslint from '@klook/quokka-standard'
+import eslint from '@nain/quokka-standard'
 
 export default eslint({
   // Enable stylistic formatting rules
@@ -154,7 +154,7 @@ The `eslint` factory function also accepts any number of arbitrary custom config
 
 ```js
 // eslint.config.js
-import eslint from '@klook/quokka-standard'
+import eslint from '@nain/quokka-standard'
 
 export default eslint(
   {
@@ -201,7 +201,7 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 
 ```js
 // eslint.config.js
-import eslint from '@klook/quokka-standard'
+import eslint from '@nain/quokka-standard'
 
 export default eslint(
   {
@@ -228,7 +228,7 @@ We also provided a `overrides` options in each integration to make it easier:
 
 ```js
 // eslint.config.js
-import eslint from '@klook/quokka-standard'
+import eslint from '@nain/quokka-standard'
 
 export default eslint({
   vue: {
@@ -262,7 +262,7 @@ Use external formatters to format files that ESLint cannot handle yet (`.css`, `
 
 ```js
 // eslint.config.js
-import eslint from '@klook/quokka-standard'
+import eslint from '@nain/quokka-standard'
 
 export default eslint({
   formatters: {
@@ -298,7 +298,7 @@ To enable React support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import eslint from '@klook/quokka-standard'
+import eslint from '@nain/quokka-standard'
 
 export default eslint({
   react: true,
@@ -317,7 +317,7 @@ To enable UnoCSS support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import eslint from '@klook/quokka-standard'
+import eslint from '@nain/quokka-standard'
 
 export default eslint({
   unocss: true,
@@ -358,7 +358,7 @@ You can optionally enable the [type aware rules](https://typescript-eslint.io/li
 
 ```js
 // eslint.config.js
-import eslint from '@klook/quokka-standard'
+import eslint from '@nain/quokka-standard'
 
 export default eslint({
   typescript: {

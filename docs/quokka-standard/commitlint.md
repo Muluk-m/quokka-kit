@@ -3,7 +3,7 @@
 ## Install
 
 ```bash
-pnpm i -D @klook/quokka-standard
+pnpm i -D @nain/quokka-standard
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ package.json
 ```diff
 {
  "commitlint": {
-+    "extends": [ "@klook/quokka-standard/commitlint.config"]
++    "extends": [ "@nain/quokka-standard/commitlint.config"]
   }
 }
 ```

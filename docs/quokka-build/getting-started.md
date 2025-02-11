@@ -9,15 +9,15 @@
 ::: code-group
 
 ```sh [npm]
-npm i -D @klook/quokka-build
+npm i -D @nain/quokka-build
 ```
 
 ```sh [pnpm]
-pnpm i -D @klook/quokka-build
+pnpm i -D @nain/quokka-build
 ```
 
 ```sh [yarn]
-yarn add -D @klook/quokka-build
+yarn add -D @nain/quokka-build
 ```
 
 :::
@@ -49,7 +49,7 @@ quokka-build --watch
 如果你需要在应用工程中实时调试包, 可以尝试指定输出目录
 
 ```shell
-quokka-build --watch -d <.../node_modules/@klook/your-pkg-name/dist>
+quokka-build --watch -d <.../node_modules/@nain/your-pkg-name/dist>
 ```
 
 ## package.json 配置
@@ -106,7 +106,7 @@ quokka-build --watch -d <.../node_modules/@klook/your-pkg-name/dist>
 单条配置
 
 ```ts
-import { defineConfig } from '@klook/quokka-build/config'
+import { defineConfig } from '@nain/quokka-build/config'
 
 export default defineConfig({
   dts: true,
@@ -118,7 +118,7 @@ export default defineConfig({
 或多条配置
 
 ```ts
-import { defineConfig } from '@klook/quokka-build/config'
+import { defineConfig } from '@nain/quokka-build/config'
 
 export default defineConfig(
   [

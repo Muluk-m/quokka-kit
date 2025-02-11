@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "Klook Quokka"
+  name: "Quokka Kit"
   text: "FE Infra tools"
   tagline: 专注前端工程解决方案
   image:

@@ -26,7 +26,7 @@ before_script:
 
 # 开启 gitlab 静态站点部署
 pages:
-  image: registry.klook.io/node/node:16
+  image: registry.io/node/node:16
   stage: deploy
   only:
     - master

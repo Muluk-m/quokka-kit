@@ -1,16 +1,16 @@
 {
-  "name": "@klook/quokka-build",
+  "name": "@nain/quokka-build",
   "version": "0.0.8",
   "description": "⚡ Fast package builder, powered by esbuild",
-  "author": "Muluk ma<muluk.ma@klook.com>",
+  "author": "nain.ma<maqiqian0316@gmail.com>",
   "license": "MIT",
-  "homepage": "https://knpm.klook.io/-/web/detail/@klook/quokka-build",
+  "homepage": "https://npm.io/-/web/detail/@nain/quokka-build",
   "repository": {
     "type": "git",
-    "url": "git+https://git.klook.io/web-infra/klook-infra-tools.git"
+    "url": "git+https://github.com/Muluk-M/quokka-kit.git"
   },
   "bugs": {
-    "url": "https://git.klook.io/web-infra/klook-infra-tools.git/issues"
+    "url": "https://github.com/Muluk-M/quokka-kit/issues"
   },
   "keywords": [
     "pnpm",

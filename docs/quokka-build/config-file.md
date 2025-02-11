@@ -8,7 +8,7 @@
 打包入口
 
 ```ts
-import { defineConfig } from '@klook/quokka-build/config'
+import { defineConfig } from '@nain/quokka-build/config'
 
 export default defineConfig({
   entry: ['src/index.ts'],
@@ -23,7 +23,7 @@ export default defineConfig({
 输出格式
 
 ```ts
-import { defineConfig } from '@klook/quokka-build/config'
+import { defineConfig } from '@nain/quokka-build/config'
 
 export default defineConfig({
   format: ['esm', 'cjs'],
@@ -52,17 +52,17 @@ export default defineConfig({
 当值为 `true` 时, 等同于
 
 ```ts
-import { defineConfig } from '@klook/quokka-build/config'
+import { defineConfig } from '@nain/quokka-build/config'
 
 export default defineConfig({
   entry: ['src/index.ts'],
   vue: {
     extractCss: true,
-    // 如果你有使用 @klook/ui, 默认会添加以下配置
+    // 如果你有使用 @nain/ui, 默认会添加以下配置
     style: {
       preprocessOptions: {
         scss: {
-          data: `@import "./node_modules/@klook/klook-ui/src/styles/token/index.scss";`,
+          data: `@import "./node_modules/@nain/ui/src/styles/token/index.scss";`,
         },
       }
     }
@@ -94,11 +94,11 @@ export default defineConfig({
 如果你需要在应用工程中实时调试包, 可以尝试指定输出目录
 
 ```ts
-import { defineConfig } from '@klook/quokka-build/config'
+import { defineConfig } from '@nain/quokka-build/config'
 
 export default defineConfig({
   entry: ['src/index.ts'],
-  outDir: 'your-project/node_modules/@klook/your-pkg-name/dist'
+  outDir: 'your-project/node_modules/@nainyour-pkg-name/dist'
 })
 ```
 
@@ -130,7 +130,7 @@ export default defineConfig({
 参考 [esbuild Documentation](https://esbuild.github.io/api/#define)
 
 ```ts
-import { defineConfig } from '@klook/quokka-build/config'
+import { defineConfig } from '@nain/quokka-build/config'
 
 export default defineConfig({
   entry: ['src/index.ts'],

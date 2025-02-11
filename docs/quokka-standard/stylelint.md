@@ -2,10 +2,10 @@
 
 ## Install
 
-安装 `@klook/quokka-standard`
+安装 `@nain/quokka-standard`
 
 ```bash
-pnpm i -D @klook/quokka-standard
+pnpm i -D @nain/quokka-standard
 ```
 
 安装 stylelint 依赖
@@ -29,7 +29,7 @@ pnpm i -D @klook/quokka-standard
 /** @type {import('stylelint').Config} */
 export default {
   extends: [
-    '@klook/standard/stylelint.config',
+    '@nainstandard/stylelint.config',
   ],
   rules: {},
 }

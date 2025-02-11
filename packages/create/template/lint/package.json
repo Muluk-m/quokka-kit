@@ -5,8 +5,8 @@
     "prepare": "simple-git-hooks || true"
   },
   "devDependencies": {
-    "@klook/quokka-build": "^0.0.8",
-    "@klook/quokka-standard": "^0.0.13",
+    "@nain/quokka-build": "^0.0.8",
+    "@nain/quokka-standard": "^0.0.13",
     "eslint": "^8.57.0",
     "eslint-plugin-format": "^0.1.0",
     "lint-staged": "^15.2.2",
@@ -21,7 +21,7 @@
   },
   "commitlint": {
     "extends": [
-      "@klook/quokka-standard/commitlint.config"
+      "@nain/quokka-standard/commitlint.config"
     ]
   }
 }

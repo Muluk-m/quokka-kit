@@ -9,15 +9,15 @@
 ::: code-group
 
 ```sh [npm]
-npm i -D @klook/quokka-standard
+npm i -D @nain/quokka-standard
 ```
 
 ```sh [pnpm]
-pnpm i -D @klook/quokka-standard
+pnpm i -D @nain/quokka-standard
 ```
 
 ```sh [yarn]
-yarn add -D @klook/quokka-standard
+yarn add -D @nain/quokka-standard
 ```
 
 :::
@@ -26,7 +26,7 @@ yarn add -D @klook/quokka-standard
 
 ```js
 // eslint.config.js
-import eslint from '@klook/quokka-standard'
+import eslint from '@nain/quokka-standard'
 
 export default eslint({
   ignores: [
@@ -46,7 +46,7 @@ export default eslint({
 /** @type {import('stylelint').Config} */
 export default {
   extends: [
-    '@klook/quokka-standard/stylelint.config',
+    '@nain/quokka-standard/stylelint.config',
   ],
   rules: {},
 }
@@ -59,7 +59,7 @@ export default {
 {
   "commitlint": {
     "extends": [
-      "@klook/quokka-standard/commitlint.config"
+      "@nain/quokka-standard/commitlint.config"
     ]
   }
 }

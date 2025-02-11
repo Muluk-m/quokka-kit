@@ -3,7 +3,7 @@
 ## Install
 
 ```bash
-pnpm i -D @klook/quokka-standard
+pnpm i -D @nain/quokka-standard
 ```
 
 ## quokka init

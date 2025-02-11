@@ -1,4 +1,4 @@
-# @klook/quokka-build
+# @nain/quokka-build
 
 🚀 Fast package builder, powered by esbuild
 
@@ -11,11 +11,11 @@ Node.js原生支持的任何内容，即 .js、.json、.mjs。和 TypeScript .ts
 ## ⚙️ Install
 
 ```bash
-npm i @klook/quokka-build -D
+npm i @nain/quokka-build -D
 # Or Yarn
-yarn add @klook/quokka-build --dev
+yarn add @nain/quokka-build --dev
 # Or pnpm
-pnpm add @klook/quokka-build -D
+pnpm add @nain/quokka-build -D
 ```
 
 ## 📖 Usage

@@ -1,13 +1,13 @@
 {
-  "name": "@klook/quokka-create",
+  "name": "@nain/quokka-create",
   "type": "module",
   "version": "0.0.8",
-  "author": "Muluk ma<muluk.ma@klook.com>",
+  "author": "nain.ma<maqiqian0316@gmail.com>",
   "license": "MIT",
-  "homepage": "https://knpm.klook.io/-/web/detail/@klook/quokka-build",
+  "homepage": "https://npm.io/-/web/detail/@nain/quokka-build",
   "repository": {
     "type": "git",
-    "url": "git+https://git.klook.io/web-infra/klook-infra-tools.git"
+    "url": "git+https://github.com/Muluk-M/quokka-kit.git"
   },
   "bin": {
     "create-quokka": "./outfile.cjs",

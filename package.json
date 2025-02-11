@@ -1,20 +1,12 @@
 {
-  "name": "klook-infra-tools",
+  "name": "quokka-kit",
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@8.15.5",
   "description": "A collection of modern high-performance tools",
-  "author": "Muluk ma<muluk.ma@klook.com>",
+  "author": "Nain ma<maqiqian0316@gmail.com>",
   "license": "MIT",
   "homepage": "",
-  "repository": {
-    "type": "git",
-    "url": "git+https://git.klook.io/web-infra/klook-infra-tools.git"
-  },
-  "bugs": {
-    "url": "https://git.klook.io/web-infra/klook-infra-tools.git/issues"
-  },
   "keywords": [
     "tools",
     "build",
@@ -39,8 +31,8 @@
     "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
-    "@klook/quokka-build": "workspace:*",
-    "@klook/quokka-standard": "^0.0.13",
+    "@nain/quokka-build": "workspace:*",
+    "@nain/quokka-standard": "workspace:*",
     "@types/node": "^20.12.3",
     "bumpp": "^9.4.0",
     "eslint": "^8.57.0",
@@ -63,7 +55,8 @@
   },
   "commitlint": {
     "extends": [
-      "@klook/quokka-standard/commitlint.config"
+      "@nain/quokka-standard/commitlint.config"
     ]
-  }
+  },
+  "packageManager": "pnpm@10.3.0+sha512.ee592eda8815a8a293c206bb0917c4bb0ff274c50def7cbc17be05ec641fc2d1b02490ce660061356bd0d126a4d7eb2ec8830e6959fb8a447571c631d5a2442d"
 }

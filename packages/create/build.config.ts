@@ -1,4 +1,4 @@
-import { defineConfig } from '@klook/quokka-build'
+import { defineConfig } from '@nain/quokka-build'
 
 export default defineConfig({
   platform: 'node',

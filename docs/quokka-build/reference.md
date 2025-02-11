@@ -27,7 +27,7 @@ export interface BuildOptions {
 ## 多入口配置
 
 ```ts
-import { defineConfig } from '@klook/quokka-build/config'
+import { defineConfig } from '@nain/quokka-build/config'
 
 export default defineConfig(
   [

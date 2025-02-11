@@ -5,19 +5,18 @@ import type { PluginOption } from 'vite'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: 'Klook Quokka',
-  base: '/klook-infra-tools',
-  description: 'Klook FE Infra tools',
+  title: 'Quokka kit',
+  description: 'FE tools',
   outDir: '../public',
   vite: {
     plugins: [SearchPlugin() as PluginOption],
   },
   srcDir: '.',
   head: [
-    ['link', { rel: 'icon', type: 'image/ico', href: '/klook-infra-tools/favicon.ico' }],
+    ['link', { rel: 'icon', type: 'image/ico', href: '/quokka-kit/favicon.ico' }],
   ],
   themeConfig: {
-    logo: 'https://cdn.klook.com/s/dist_web/favicons/favicon-32x32.png',
+    logo: 'https://avatars.githubusercontent.com/u/69963532?v=4',
 
     nav: nav(),
 
@@ -28,7 +27,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://git.klook.io/web-infra/klook-infra-tools' },
+      { icon: 'github', link: 'https://github.com/Muluk-M/quokka-kit' },
     ],
 
     lastUpdated: {
